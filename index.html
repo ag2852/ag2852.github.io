@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -29,6 +29,10 @@
             --accent-glow: rgba(204, 0, 51, 0.08);
             --shadow-sm: 0 4px 12px rgba(30, 58, 138, 0.04);
             --shadow-md: 0 8px 24px rgba(30, 58, 138, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         * {
@@ -62,22 +66,73 @@
             background: linear-gradient(90deg, var(--rutgers-scarlet) 0%, var(--navy-primary) 100%);
         }
 
+        /* Navigation Header */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--navy-primary);
+            text-decoration: none;
+        }
+
+        .nav-brand span {
+            color: var(--rutgers-scarlet);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--rutgers-scarlet);
+        }
+
         /* Header / Hero Section */
         header {
-            padding: 60px 0 40px 0;
+            padding: 48px 0 40px 0;
             border-bottom: 1px solid var(--border-color);
             background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-main) 100%);
         }
 
         .profile-wrapper {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 36px;
         }
 
         .headshot-container {
             position: relative;
             flex-shrink: 0;
+            margin-top: 8px;
         }
 
         .headshot-frame {
@@ -88,20 +143,6 @@
             border: 4px solid #FFFFFF;
             box-shadow: 0 0 0 3px var(--rutgers-scarlet), var(--shadow-md);
             background-color: var(--powder-blue);
-        }
-
-        .school-badge {
-            position: absolute;
-            bottom: 4px;
-            right: 4px;
-            background-color: var(--rutgers-scarlet);
-            color: #FFFFFF;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            border: 2px solid #FFFFFF;
-            letter-spacing: 0.5px;
         }
 
         .profile-info {
@@ -129,6 +170,7 @@
             flex-wrap: wrap;
             gap: 12px;
             margin-top: 12px;
+            margin-bottom: 24px;
         }
 
         .btn-link {
@@ -153,9 +195,31 @@
             transform: translateY(-2px);
         }
 
+        /* Integrated Personal Statement Card */
+        .header-statement-card {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--rutgers-scarlet);
+            padding: 18px 20px;
+            border-radius: 0 12px 12px 0;
+            box-shadow: var(--shadow-sm);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-statement-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.975rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-style: normal; /* Ensured NOT italicized */
+            font-weight: 400;
+        }
+
         /* Section Styling */
         section {
             padding: 48px 0 0 0;
+            scroll-margin-top: 70px;
         }
 
         .section-header {
@@ -182,37 +246,7 @@
             background-color: var(--border-color);
         }
 
-        /* 1. Personal Statement Section */
-        .statement-card {
-            background-color: var(--card-bg);
-            border-left: 5px solid var(--rutgers-scarlet);
-            padding: 32px;
-            border-radius: 0 16px 16px 0;
-            box-shadow: var(--shadow-sm);
-            position: relative;
-        }
-
-        .statement-quote {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            color: var(--navy-primary);
-            line-height: 1.7;
-            font-style: italic;
-        }
-
-        .instructions-hint {
-            margin-top: 14px;
-            padding: 10px 14px;
-            background-color: var(--powder-blue);
-            border-radius: 8px;
-            font-size: 0.825rem;
-            color: var(--navy-primary);
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-
-        /* 2. Skills Section */
+        /* Skills Section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -270,7 +304,7 @@
             font-weight: 600;
         }
 
-        /* 3. Projects Section */
+        /* Projects Section */
         .projects-list {
             display: flex;
             flex-direction: column;
@@ -409,14 +443,25 @@
 
         /* Responsive design */
         @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
             .profile-wrapper {
                 flex-direction: column;
                 text-align: center;
+                align-items: center;
                 gap: 20px;
             }
 
             .contact-links {
                 justify-content: center;
+            }
+
+            .header-statement-card {
+                text-align: left;
             }
 
             .project-header {
@@ -431,6 +476,18 @@
 
     <div class="top-stripe"></div>
 
+    <!-- STICKY NAVIGATION HEADER -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">Ava Groh <span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#statement">Personal Statement</a></li>
+                <li><a href="#skills">Skills & Capabilities</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- HEADER / HERO -->
     <header>
         <div class="container">
@@ -438,11 +495,10 @@
                 
                 <!-- Headshot Circle -->
                 <div class="headshot-container">
-                    <!-- REPLACE 'https://via.placeholder.com/170' with the filename of your photo (e.g. 'headshot.jpg') -->
                     <img src="Ava_Groh_Headshot.jpg" alt="Ava Groh Headshot" class="headshot-frame">
                 </div>
 
-                <!-- Bio Info -->
+                <!-- Bio Info & Personal Statement -->
                 <div class="profile-info">
                     <div class="name-title">
                         <h1>Ava Groh</h1>
@@ -456,11 +512,18 @@
                         <a href="https://www.linkedin.com/in/avagroh/" target="_blank" class="btn-link">
                             <i class="fa-brands fa-linkedin"></i> LinkedIn
                         </a>
-                        <!-- Link to your resume PDF uploaded in your repository or Google Drive -->
                         <a href="Ava_Groh_Resume.pdf" target="_blank" class="btn-link">
                             <i class="fa-regular fa-file-pdf"></i> Resume
                         </a>
                     </div>
+
+                    <!-- Personal Statement Block (Placed next to headshot & under contact buttons) -->
+                    <div id="statement" class="header-statement-card">
+                        <p class="header-statement-text">
+                            Combining a foundation in Business Analytics and IT with proven peer leadership, I am an aspiring Business Systems Analyst dedicated to using collaborative communication to foster positive client interactions.
+                        </p>
+                    </div>
+
                 </div>
 
             </div>
@@ -469,23 +532,7 @@
 
     <main class="container">
 
-        <!-- SECTION 1: PERSONAL STATEMENT -->
-        <section id="statement">
-            <div class="section-header">
-                <i class="fa-solid fa-quote-left section-icon"></i>
-                <h2 class="section-title">Personal Statement</h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="statement-card">
-                <div class="statement-quote">
-                    "Combining a foundation in Business Analytics and IT with proven peer leadership, I am an aspiring Business Systems Analyst dedicated to using collaborative communication to foster positive client interactions"
-                </div>
-            </div>
-        </section>
-
-
-        <!-- SECTION 2: SKILLS -->
+        <!-- SECTION 1: SKILLS -->
         <section id="skills">
             <div class="section-header">
                 <i class="fa-solid fa-chart-line section-icon"></i>
@@ -501,7 +548,6 @@
                         <i class="fa-solid fa-laptop-code"></i> Technical & Analytics
                     </div>
                     <div class="pills-container">
-                        <!-- Add/Modify your technical skills here -->
                         <span class="skill-pill highlight">SQL & Data Querying</span>
                         <span class="skill-pill highlight">Data Visualization</span>
                         <span class="skill-pill">Statistical Analysis</span>
@@ -512,13 +558,12 @@
                 <!-- Category 2 -->
                 <div class="skill-group">
                     <div class="group-title">
-                        <i class="fa-solid fa-briefcase"></i> Business Strategy
+                        <i class="fa-solid fa-briefcase"></i> Business
                     </div>
                     <div class="pills-container">
-                        <!-- Add/Modify your business skills here -->
                         <span class="skill-pill highlight">Business Intelligence</span>
-                        <span class="skill-pill">Market Research</span>
-                        <span class="skill-pill">Financial Fundamentals</span>
+                        <span class="skill-pill">Leadership</span>
+                        <span class="skill-pill">Project Organization</span>
                     </div>
                 </div>
 
@@ -528,7 +573,6 @@
                         <i class="fa-solid fa-toolbox"></i> Tools & Platforms
                     </div>
                     <div class="pills-container">
-                        <!-- Add/Modify software tools you use -->
                         <span class="skill-pill">MySQL Workbench</span>
                         <span class="skill-pill">Google Sheets</span>
                         <span class="skill-pill">Microsoft Excel</span>
@@ -540,7 +584,7 @@
         </section>
 
 
-        <!-- SECTION 3: PROJECTS -->
+        <!-- SECTION 2: PROJECTS -->
         <section id="projects">
             <div class="section-header">
                 <i class="fa-solid fa-folder-open section-icon"></i>
@@ -567,11 +611,9 @@
                         </ul>
                     </div>
                     <div class="project-actions">
-                        <!-- Replace link with your shareable Google Doc link -->
                         <a href="YOUR_GOOGLE_DOC_LINK_HERE" target="_blank" class="btn-action btn-primary">
                             <i class="fa-regular fa-file-word"></i> Open Google Doc
                         </a>
-                        <!-- Replace link with your uploaded PDF link -->
                         <a href="YOUR_PROJECT_FILE.pdf" target="_blank" class="btn-action btn-secondary">
                             <i class="fa-regular fa-file-pdf"></i> View PDF Report
                         </a>
@@ -596,11 +638,9 @@
                         </ul>
                     </div>
                     <div class="project-actions">
-                        <!-- Link to Google Doc -->
                         <a href="YOUR_GOOGLE_DOC_LINK_2_HERE" target="_blank" class="btn-action btn-primary">
                             <i class="fa-regular fa-file-word"></i> Open Google Doc
                         </a>
-                        <!-- Link to PDF -->
                         <a href="YOUR_PROJECT_FILE_2.pdf" target="_blank" class="btn-action btn-secondary">
                             <i class="fa-regular fa-file-pdf"></i> View PDF Report
                         </a>
@@ -625,7 +665,6 @@
                         </ul>
                     </div>
                     <div class="project-actions">
-                        <!-- Toggle inline preview or open Google Doc -->
                         <a href="YOUR_GOOGLE_DOC_LINK_3_HERE" target="_blank" class="btn-action btn-primary">
                             <i class="fa-regular fa-file-word"></i> Open Google Doc
                         </a>
@@ -639,7 +678,6 @@
                         <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 8px;">
                             <i class="fa-solid fa-circle-info"></i> Paste your Google Doc or PDF preview URL in the <code>iframe src</code> below:
                         </p>
-                        <!-- For Google Docs, use: https://docs.google.com/document/d/YOUR_DOC_ID/preview -->
                         <iframe src="about:blank" title="Project Preview"></iframe>
                     </div>
                 </div>
